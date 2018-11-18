@@ -6,5 +6,17 @@ function chooseTemplate(templateNumber) {
   document.body.querySelector(`#main`).appendChild(clone);
 }
 
-chooseTemplate(4);
-console.log(chooseTemplate(1));
+
+chooseTemplate(2);
+
+document.addEventListener(`keydown`, screen);
+
+function screen(e) {
+  const keyCode = e.keyCode;
+  if (keyCode === 39) {
+    chooseTemplate(templateNumber + 1);
+  } else if ((keyCode === 37)) {
+    chooseTemplate(templateNumber - 1);
+  }
+}
+
