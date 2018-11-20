@@ -1,3 +1,5 @@
+'use strict';
+
 const templateArray = [
   `intro`,
   `greeting`,
@@ -7,6 +9,7 @@ const templateArray = [
   `game-3`,
   `stats`
 ].map((id) => document.querySelector(`#${id}`));
+
 // ок, мы берем все  айдишники темплейтов и собираем эти айдишники воедино.
 
 const mainElement = document.querySelector(`#main`);
@@ -15,7 +18,7 @@ let currentTemplateNumber = 0;
 
 const chooseTemplate = (screenNumber) => {
   if ((screenNumber < 0) || (screenNumber > templateArray.length - 1)) {
-    return;
+    return null; // может лучше иначе возвращать?
   }
   // зачем переопределили currentTemplateNumber на screenNumber? В чем смысл?
   // почему и что дает пустой return
@@ -57,6 +60,7 @@ const arrowHandler = (e) => {
     chooseTemplate(currentTemplateNumber - 1);
   }
 };
+
 document.addEventListener(`keydown`, (e) => {
   arrowHandler(e);
 });
