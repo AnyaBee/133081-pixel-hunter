@@ -1,52 +1,62 @@
+const templateArray = [
+  `intro`,
+  `greeting`,
+  `rules`,
+  `game-1`,
+  `game-2`,
+  `game-3`,
+  `stats`
+].map((id) => document.querySelector(`#${id}`));
+// ок, мы берем все  айдишники темплейтов и собираем эти айдишники воедино.
 
-const templateArray = document.querySelectorAll(`template`);
 const mainElement = document.querySelector(`#main`);
 
-const chooseTemplate = (currentTemplateNumber) => {
+let currentTemplateNumber = 0;
+
+const chooseTemplate = (screenNumber) => {
+  if ((screenNumber < 0) || (screenNumber > templateArray.length - 1)) {
+    return;
+  }
+  // зачем переопределили currentTemplateNumber на screenNumber? В чем смысл?
+  // почему и что дает пустой return
+
+  currentTemplateNumber = screenNumber; // в чем фишка?
   const shadow = document.createElement(`div`);
   const content = templateArray[currentTemplateNumber].content.cloneNode(true);
   shadow.appendChild(content);
-  mainElement.appendChild(shadow);
-  return shadow.cloneNode(true);
-}
+  const result = shadow.cloneNode(true);
+  mainElement.innerHTML = ``;
+  mainElement.appendChild(result);
+  return result;
+};
 
-chooseTemplate(2);
+chooseTemplate(currentTemplateNumber);
 
-const arrowWrapper = document.createElement(`div`);
-arrowWrapper.className = `arrows__wrap`;
-document.body.appendChild(arrowWrapper);
+const arrowsButtons = document.createElement(`div`);
+arrowsButtons.className = `arrows__wrap`;
+arrowsButtons.innerHTML = `
+  <button class="arrows__btn"><-</button>
+  <button class="arrows__btn">-></button>
+`;
+document.body.appendChild(arrowsButtons);
 
+const navigationArrows = document.querySelectorAll(`.arrows__btn`);
+navigationArrows[0].addEventListener(`click`, () => {
+  chooseTemplate(currentTemplateNumber - 1);
+});
 
-const buttonSwitchPrev = document.createElement(`button`);
-const buttonSwitchNext = document.createElement(`button`);
-arrowWrapper.appendChild(buttonSwitchPrev);
-arrowWrapper.appendChild(buttonSwitchNext);
+navigationArrows[1].addEventListener(`click`, () => {
+  chooseTemplate(currentTemplateNumber + 1);
+});
 
-const arrowLeft = document.createTextNode(`<-`);
-const arrowRight = document.createTextNode(`->`);
-buttonSwitchPrev.appendChild(arrowLeft);
-buttonSwitchNext.appendChild(arrowRight);
-buttonSwitchNext.className = `arrows__btn`;
-buttonSwitchPrev.className = `arrows__btn`;
-
-//
-// function chooseTemplate(templateNumber) {
-//   const templateUsed = document.querySelector(`#${templatesArray[templateNumber]}`);
-//   const clone = document.importNode(templateUsed.content, true);
-//   document.body.querySelector(`#main`).appendChild(clone);
-// }
-//
-//
-// chooseTemplate(2);
-//
-// document.addEventListener(`keydown`, screen);
-//
-// function screen(e) {
-//   const keyCode = e.key;
-//   if (keyCode === 39) {
-//     chooseTemplate(templateNumber + 1);
-//   } else if ((keyCode === 37)) {
-//     chooseTemplate(templateNumber - 1);
-//   }
-// }
-
+const arrowHandler = (e) => {
+  const keyCode = e.key;
+  if (keyCode === 39) {
+    chooseTemplate(currentTemplateNumber + 1);
+  } else if ((keyCode === 37)) {
+    chooseTemplate(currentTemplateNumber - 1);
+  }
+};
+document.addEventListener(`keydown`, (e) => {
+  arrowHandler(e);
+});
