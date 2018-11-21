@@ -1,5 +1,3 @@
-'use strict';
-
 const templateArray = [
   `intro`,
   `greeting`,
