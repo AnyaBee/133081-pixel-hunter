@@ -54,9 +54,9 @@ navigationArrows[1].addEventListener(`click`, () => {
 
 const arrowHandler = (e) => {
   const keyCode = e.key;
-  if (keyCode === 39) {
+  if (keyCode === `ArrowRight`) {
     chooseTemplate(currentTemplateNumber + 1);
-  } else if ((keyCode === 37)) {
+  } else if ((keyCode === `ArrowLeft`)) {
     chooseTemplate(currentTemplateNumber - 1);
   }
 };
