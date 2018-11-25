@@ -1,4 +1,6 @@
-const template = `
+import {getElementFromTemplate} from './utils.js';
+
+const statsScreenTemplate = `
 <header class="header">
     <button class="back">
       <span class="visually-hidden">Вернуться к началу</span>
@@ -112,5 +114,5 @@ const template = `
   </section>
 `;
 
-const element = render(template);
-export default element;
+const statsScreenElement = getElementFromTemplate(statsScreenTemplate);
+export default statsScreenElement;

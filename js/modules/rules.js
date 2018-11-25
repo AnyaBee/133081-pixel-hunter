@@ -1,6 +1,7 @@
-import {render} from "./utils";
+import {getElementFromTemplate, changeScreen} from './utils.js';
+import game1ScreenElement from './game-1.js';
 
-const template = `
+const rulesScreenTemplate = `
 <header class="header">
     <button class="back">
       <span class="visually-hidden">Вернуться к началу</span>
@@ -30,5 +31,12 @@ const template = `
   </section>
 `;
 
-const element = render(template);
-export default element;
+const rulesScreenElement = getElementFromTemplate(rulesScreenTemplate);
+
+const rulesButton = rulesScreenElement.querySelector(`button.rules__button`);
+rulesButton.addEventListener(`click`, (e) => {
+  changeScreen(game1ScreenElement);
+});
+
+
+export default rulesScreenElement;

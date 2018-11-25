@@ -1,4 +1,6 @@
-const template = `
+import {getElementFromTemplate} from './utils.js';
+
+const game3ScreenTemplate = `
 <header class="header">
     <button class="back">
       <span class="visually-hidden">Вернуться к началу</span>
@@ -44,5 +46,5 @@ const template = `
   </section>
 `;
 
-const element = render(template);
-export default element;
+const game3ScreenElement = getElementFromTemplate(game3ScreenTemplate);
+export default game3ScreenElement;

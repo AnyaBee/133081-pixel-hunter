@@ -1,5 +1,6 @@
-import introScreen from './modules/intro.js';
-import getElementFromTemplate from './modules/utils.js';
+import {changeScreen} from './modules/utils.js';
+import introScreenElement from './modules/intro.js';
+changeScreen(introScreenElement);
 
 // const templateArray = [
 //   `intro`,
@@ -65,3 +66,4 @@ import getElementFromTemplate from './modules/utils.js';
 // document.addEventListener(`keydown`, (e) => {
 //   arrowHandler(e);
 // });
+

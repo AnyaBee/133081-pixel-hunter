@@ -1,20 +1,16 @@
+// функция показа экрана
+const getElementFromTemplate = (templateString) => {
+  const newDivWrapper = document.createElement(`div`);
+  newDivWrapper.innerHTML = templateString;
+  return newDivWrapper;
+};
 
-// const getElementFromTemplate = (templateString) => {
-//   const shadow = document.createElement(`div`);
-//   const mainElement = document.querySelector(`#main`);
-//   const content = templateString.content.cloneNode(true);
-//   shadow.appendChild(content);
-//   const result = shadow.cloneNode(true);
-//   mainElement.innerHTML = ``;
-//   mainElement.appendChild(result);
-//   return result;
-// };
+const mainElement = document.querySelector(`#main`);
 
+// функция смены экрана
+const changeScreen = (screen) => {
+  mainElement.innerHTML = ``;
+  mainElement.appendChild(screen);
+};
 
-function getElementFromTemplate(templateString) {
-  const templateUsed = document.querySelector(`${templateString}`);
-  const clone = document.importNode(templateUsed.content, true);
-  document.body.querySelector(`#main`).appendChild(clone);
-}
-
-export default getElementFromTemplate();
+export {getElementFromTemplate, changeScreen};
