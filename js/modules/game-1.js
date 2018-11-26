@@ -1,4 +1,5 @@
-import {getElementFromTemplate} from './utils.js';
+import {getElementFromTemplate, changeScreen} from './utils.js';
+import game2ScreenElement from './game-2.js';
 
 const game1ScreenTemplate = `
   <header class="header">
@@ -60,4 +61,38 @@ const game1ScreenTemplate = `
 `;
 
 const game1ScreenElement = getElementFromTemplate(game1ScreenTemplate);
+
+// check that the number of clicked radios is 2
+const answer1 = game1ScreenElement.querySelector(`input[name='question1'`); // if type=checked
+const answer2 = game1ScreenElement.querySelector(`input[name='question2'`);
+
+
+window.addEventListener(`change`, (e) => {
+  if ((answer1.checked === true) && (answer2.checked === true)) {
+    console.log(answer1);
+    console.log(answer1.checked);
+    changeScreen(game2ScreenElement);
+  }
+});
+
+
+// window.addEventListener(`change`, (e) => {
+//   if ((answer1.hasAttribute(`checked`) && (answer1.checked === true)) ||
+//   (answer2.hasAttribute(`checked`) && (answer2.checked === true))) {
+//     changeScreen(game2ScreenElement);
+//   }
+// });
+// answer1.addEventListener(`change`, (e) =>  {
+//   answer2.addEventListener(`change`, (e) =>
+//   changeScreen(game2ScreenElement);
+// });
+
+
+// // const secondRadioButton = game1ScreenElement.querySelector(`question2`);
+// //
+// answer.addEventListener(`change`, (e) => {
+//   changeScreen(game2ScreenElement);
+// });
+
+
 export default game1ScreenElement;

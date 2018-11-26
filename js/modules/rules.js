@@ -34,9 +34,22 @@ const rulesScreenTemplate = `
 const rulesScreenElement = getElementFromTemplate(rulesScreenTemplate);
 
 const rulesButton = rulesScreenElement.querySelector(`button.rules__button`);
+const rulesInput = rulesScreenElement.querySelector(`input.rules__input`);
+
+rulesInput.addEventListener(`input`, (e) => {
+  if (rulesInput && rulesInput.value) {
+    rulesButton.removeAttribute(`disabled`);
+  }
+});
+
+rulesInput.addEventListener(`input`, (e) => {
+  if (rulesInput.value === ``) {
+    rulesButton.setAttribute(`disabled`, ``);
+  }
+});
+
 rulesButton.addEventListener(`click`, (e) => {
   changeScreen(game1ScreenElement);
 });
-
 
 export default rulesScreenElement;
