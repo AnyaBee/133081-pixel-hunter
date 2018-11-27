@@ -1,4 +1,5 @@
-import {getElementFromTemplate} from './utils.js';
+import {getElementFromTemplate, changeScreen} from './utils.js';
+import game3ScreenElement from './game-3.js';
 
 const game2ScreenTemplate = `
 <header class="header">
@@ -49,4 +50,14 @@ const game2ScreenTemplate = `
 `;
 
 const game2ScreenElement = getElementFromTemplate(game2ScreenTemplate);
+
+const formSelector = game2ScreenElement.querySelector(`form.game__content`);
+const answer1 = game2ScreenElement.querySelectorAll(`input[name='question1'`);
+
+formSelector.addEventListener(`change`, () => {
+  if ((answer1[0].checked === true) || (answer1[1].checked === true)) {
+    changeScreen(game3ScreenElement);
+  }
+});
+
 export default game2ScreenElement;

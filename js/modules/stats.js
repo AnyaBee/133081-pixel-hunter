@@ -115,4 +115,5 @@ const statsScreenTemplate = `
 `;
 
 const statsScreenElement = getElementFromTemplate(statsScreenTemplate);
+
 export default statsScreenElement;

@@ -10,10 +10,8 @@ const introScreenTemplate = `
 
 const introScreenElement = getElementFromTemplate(introScreenTemplate);
 
-///добавление обработчиков на элемент
-//например
 const asteriskButton = introScreenElement.querySelector(`button.asterisk`);
-asteriskButton.addEventListener(`click`, (e) => {
+asteriskButton.addEventListener(`click`, () => {
   changeScreen(greetingScreenElement);
 });
 

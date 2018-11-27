@@ -59,40 +59,17 @@ const game1ScreenTemplate = `
     </ul>
   </section>
 `;
-
 const game1ScreenElement = getElementFromTemplate(game1ScreenTemplate);
 
-// check that the number of clicked radios is 2
-const answer1 = game1ScreenElement.querySelector(`input[name='question1'`); // if type=checked
-const answer2 = game1ScreenElement.querySelector(`input[name='question2'`);
+const formSelector = game1ScreenElement.querySelector(`form.game__content`);
+const answer1 = game1ScreenElement.querySelectorAll(`input[name='question1'`);
+const answer2 = game1ScreenElement.querySelectorAll(`input[name='question2'`);
 
-
-window.addEventListener(`change`, (e) => {
-  if ((answer1.checked === true) && (answer2.checked === true)) {
-    console.log(answer1);
-    console.log(answer1.checked);
+formSelector.addEventListener(`change`, () => {
+  if (((answer1[0].checked === true) || (answer1[1].checked === true)) &&
+  ((answer2[0].checked === true) || (answer2[1].checked === true))) {
     changeScreen(game2ScreenElement);
   }
 });
-
-
-// window.addEventListener(`change`, (e) => {
-//   if ((answer1.hasAttribute(`checked`) && (answer1.checked === true)) ||
-//   (answer2.hasAttribute(`checked`) && (answer2.checked === true))) {
-//     changeScreen(game2ScreenElement);
-//   }
-// });
-// answer1.addEventListener(`change`, (e) =>  {
-//   answer2.addEventListener(`change`, (e) =>
-//   changeScreen(game2ScreenElement);
-// });
-
-
-// // const secondRadioButton = game1ScreenElement.querySelector(`question2`);
-// //
-// answer.addEventListener(`change`, (e) => {
-//   changeScreen(game2ScreenElement);
-// });
-
 
 export default game1ScreenElement;

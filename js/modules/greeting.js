@@ -27,7 +27,7 @@ const greetingScreenTemplate = `
 const greetingScreenElement = getElementFromTemplate(greetingScreenTemplate);
 
 const continueButton = greetingScreenElement.querySelector(`button.greeting__continue`);
-continueButton.addEventListener(`click`, (e) => {
+continueButton.addEventListener(`click`, () => {
   changeScreen(rulesScreenElement);
 });
 
