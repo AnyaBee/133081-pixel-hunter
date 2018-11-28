@@ -1,5 +1,5 @@
-import {getElementFromTemplate, changeScreen} from './utils.js';
-import greetingScreenElement from './greeting.js';
+import {getElementFromTemplate, changeScreen} from './utils';
+import greetingScreenElement from './greeting';
 
 const introScreenTemplate = `
   <section class="intro">

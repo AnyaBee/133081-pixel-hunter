@@ -1,5 +1,6 @@
-import {getElementFromTemplate, changeScreen} from './utils.js';
-import statsScreenElement from './stats.js';
+import {getElementFromTemplate, changeScreen} from './utils';
+import statsScreenElement from './stats';
+import greetingScreenElement from './greeting';
 
 const game3ScreenTemplate = `
 <header class="header">
@@ -52,6 +53,11 @@ const formSelector = game3ScreenElement.querySelector(`form.game__content`);
 
 formSelector.addEventListener(`click`, () => {
   changeScreen(statsScreenElement);
+});
+
+const backButton = game3ScreenElement.querySelector(`button.back`);
+backButton.addEventListener(`click`, () => {
+  changeScreen(greetingScreenElement);
 });
 
 export default game3ScreenElement;

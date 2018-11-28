@@ -1,5 +1,6 @@
-import {getElementFromTemplate, changeScreen} from './utils.js';
-import game2ScreenElement from './game-2.js';
+import {getElementFromTemplate, changeScreen} from './utils';
+import game2ScreenElement from './game-2';
+import greetingScreenElement from './greeting';
 
 const game1ScreenTemplate = `
   <header class="header">
@@ -66,10 +67,15 @@ const answer1 = game1ScreenElement.querySelectorAll(`input[name='question1'`);
 const answer2 = game1ScreenElement.querySelectorAll(`input[name='question2'`);
 
 formSelector.addEventListener(`change`, () => {
-  if (((answer1[0].checked === true) || (answer1[1].checked === true)) &&
-  ((answer2[0].checked === true) || (answer2[1].checked === true))) {
+  if (((answer1[0].checked) || (answer1[1].checked)) &&
+  ((answer2[0].checked) || (answer2[1].checked))) {
     changeScreen(game2ScreenElement);
   }
+});
+
+const backButton = game1ScreenElement.querySelector(`button.back`);
+backButton.addEventListener(`click`, () => {
+  changeScreen(greetingScreenElement);
 });
 
 export default game1ScreenElement;

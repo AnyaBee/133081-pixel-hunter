@@ -1,5 +1,5 @@
-import {changeScreen} from './modules/utils.js';
-import introScreenElement from './modules/intro.js';
+import {changeScreen} from './modules/utils';
+import introScreenElement from './modules/intro';
 changeScreen(introScreenElement);
 
 // const templateArray = [

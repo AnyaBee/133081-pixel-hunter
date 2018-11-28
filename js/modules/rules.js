@@ -1,5 +1,5 @@
-import {getElementFromTemplate, changeScreen} from './utils.js';
-import game1ScreenElement from './game-1.js';
+import {getElementFromTemplate, changeScreen} from './utils';
+import game1ScreenElement from './game-1';
 
 const rulesScreenTemplate = `
 <header class="header">

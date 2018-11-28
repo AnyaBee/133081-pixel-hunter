@@ -1,4 +1,5 @@
-import {getElementFromTemplate} from './utils.js';
+import {getElementFromTemplate, changeScreen} from './utils';
+import greetingScreenElement from './greeting';
 
 const statsScreenTemplate = `
 <header class="header">
@@ -115,5 +116,10 @@ const statsScreenTemplate = `
 `;
 
 const statsScreenElement = getElementFromTemplate(statsScreenTemplate);
+
+const backButton = statsScreenElement.querySelector(`button.back`);
+backButton.addEventListener(`click`, () => {
+  changeScreen(greetingScreenElement);
+});
 
 export default statsScreenElement;
