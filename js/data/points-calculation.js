@@ -11,10 +11,10 @@ const pointsCounter = (responses, livesLeft) => {
     if (answer.correct) {
       totalScore += correctAnswer;
     }
-    if (answer.time > 25) {
+    if (answer.time > 20) {
       totalScore -= slowAnswer;
     }
-    if (answer.time < 15) {
+    if (answer.time < 10) {
       totalScore += fastAnswer;
     }
   });
