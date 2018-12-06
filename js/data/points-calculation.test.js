@@ -2,41 +2,80 @@ import {pointsCounter} from './points-calculation';
 
 import {expect} from 'chai';
 
-let totalScore = 0;
-
-describe(`Function that calculates the amount of points user can get`, () => {
-
-  it(`should return -1 if user did not respond to all questions`, () => {
-    totalScore = pointsCounter(5);
-    expect(totalScore).to.equal(-1);
+describe(`pointsCounter`, () => {
+  it(`Если игрок ответил меньше чем на 10 вопросов, то игра считается непройденой и функция должна вернуть -1`, () => {
+    // assert.equal(-1, pointsCounter([]));
+    expect(pointsCounter([], 3)).to.equal(-1);
   });
 
-  it(`should return 1150 points if all answers are correct and all lives have been kept`, () => {
-    totalScore = pointsCounter(10, 3);
-    expect(totalScore).to.equal(1150);
+  it(`should return 1150 points when all answers are correct and usual timing, and all lives have been kept `, () => {
+    expect(pointsCounter([
+      {correct: true, time: 24},
+      {correct: true, time: 15},
+      {correct: true, time: 18},
+      {correct: true, time: 23},
+      {correct: true, time: 16},
+      {correct: true, time: 19},
+      {correct: true, time: 18},
+      {correct: true, time: 24},
+      {correct: true, time: 15},
+      {correct: true, time: 17}], 3)).to.equal(1150);
   });
 
+  it(`should return 1650 points when all answers are correct and fast timing, and all lives have been kept `, () => {
+    expect(pointsCounter([
+      {correct: true, time: 14},
+      {correct: true, time: 11},
+      {correct: true, time: 10},
+      {correct: true, time: 5},
+      {correct: true, time: 13},
+      {correct: true, time: 10},
+      {correct: true, time: 12},
+      {correct: true, time: 11},
+      {correct: true, time: 14},
+      {correct: true, time: 9}], 3)).to.equal(1650);
+  });
 
-  // it(`should return x points when all answers are correct and fast and all lives have been kept `, () => {
-  //   totalScore = pointsCounter(10, 3);
-  //   expect(totalScore).to.equal(1150);
-  // });
+  it(`should return 600 points when all answers are correct and slow timing, and two lives are left `, () => {
+    expect(pointsCounter([
+      {correct: true, time: 34},
+      {correct: true, time: 31},
+      {correct: true, time: 30},
+      {correct: true, time: 35},
+      {correct: true, time: 33},
+      {correct: true, time: 30},
+      {correct: true, time: 32},
+      {correct: true, time: 31},
+      {correct: true, time: 34},
+      {correct: true, time: 31}], 2)).to.equal(600);
+  });
 
+  it(`should return 600 points when all answers are correct and slow timing, and two lives are left `, () => {
+    expect(pointsCounter([
+      {correct: true, time: 34},
+      {correct: true, time: 31},
+      {correct: true, time: 30},
+      {correct: true, time: 35},
+      {correct: true, time: 33},
+      {correct: true, time: 30},
+      {correct: true, time: 32},
+      {correct: true, time: 31},
+      {correct: true, time: 34},
+      {correct: true, time: 31}], 2)).to.equal(600);
+  });
+  it(`should return 950 points when all answers are correct, 5 slow, 2 fast, 3 usual, and two lives are left `, () => {
+    expect(pointsCounter([
+      {correct: true, time: 34},
+      {correct: true, time: 31},
+      {correct: true, time: 30},
+      {correct: true, time: 35},
+      {correct: true, time: 33},
+      {correct: true, time: 10},
+      {correct: true, time: 12},
+      {correct: true, time: 17},
+      {correct: true, time: 18},
+      {correct: true, time: 19}], 2)).to.equal(950);
+  });
 
-  // it(`should return x points when all answers are correct and fast and all lives have been kept `, () => {
-  //   totalScore = pointsCounter(10, 3);
-  //   expect(totalScore).to.equal(1150);
-  // });
-  //
-  // it(`should return x points when all answers are correct and slow and all lives have been kept `, () => {
-  //   totalScore = pointsCounter(10, 3);
-  //   expect(totalScore).to.equal(1150);
-  // });
-  //
-  // it(`should return x points when all answers are correct, 4 fast and 2 slow, the remaining are usual,
-  // all lives have been kept `, () => {
-  //   totalScore = pointsCounter(10, 3);
-  //   expect(totalScore).to.equal(1150);
-  // });
 });
 
